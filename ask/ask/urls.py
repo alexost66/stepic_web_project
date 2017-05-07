@@ -19,7 +19,7 @@ from ask.views import not_found,hello
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    #url(r'^$', index),
+    url(r'^$', hello),
     url(r'^login/', hello),
     url(r'^signup/', hello),
     url(r'^ask/', hello),
