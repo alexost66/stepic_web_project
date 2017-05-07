@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from ask.views import not_found,hello
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    #url(r'^$', index),
+    url(r'^login/', hello),
+    url(r'^signup/', hello),
+    url(r'^ask/', hello),
+    url(r'^popular/', hello),
+    url(r'^new/', hello),
+    url(r'^question/', include('qa.urls')),
+    url(r'^', not_found),
 ]
