@@ -5,6 +5,6 @@ mysql -uroot -e "GRANT ALL ON qadb.* TO 'django'@'localhost';"
 mysql -uroot -e "FLUSH PRIVILEGES;"
 
 cd ask
-python manage makemigrations
-python manage migrate
+python manage.py makemigrations
+python manage.py migrate
 
