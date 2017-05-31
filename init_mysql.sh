@@ -1,6 +1,6 @@
 sudo /etc/init.d/mysql start
-mysql -uroot -u "CREATE DATABASE qadb;"
-mysql -uroot -u "CREATE USER 'django'@'localhost' IDENTIFIED BY 'pass123';"
-mysql -uroot -u "GRANT ALL ON qadb.* TO 'django'@'localhost';"
-mysql -uroot -u "FLUSH PRIVILEGES;"
+mysql -uroot -e "CREATE DATABASE qadb;"
+mysql -uroot -e "CREATE USER 'django'@'localhost' IDENTIFIED BY 'pass123';"
+mysql -uroot -e "GRANT ALL ON qadb.* TO 'django'@'localhost';"
+mysql -uroot -e "FLUSH PRIVILEGES;"
 
