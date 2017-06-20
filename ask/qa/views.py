@@ -1,10 +1,22 @@
 from django.shortcuts import render
+from django.http import HttpResponse, Http404
+from django.core.paginator import Paginator
+
+from qa.models import Question, Answer
 
 # Create your views here.
 
 from django.http import HttpResponse 
 def test(request, *args, **kwargs):
     return HttpResponse('OK')
+
+
+def question(request, num,):
+    try:
+        q = Question.objects.get(id=num)
+    except Question.DoesNotExist:
+        raise Http404
+    return render(request, 'question.html', {'question': q, })
 
 
 def index(request):
@@ -24,12 +36,6 @@ def index(request):
                    'questions': page.object_list,
                    'page': page, })
 
-def question(request, num,):
-    try:
-        q = Question.objects.get(id=num)
-    except Question.DoesNotExist:
-        raise Http404
-    return render(request, 'question.html', {'question': q, })
 
 def popular(request):
     try:
