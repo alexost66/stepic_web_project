@@ -20,7 +20,7 @@ from qa.views import index, popular
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', hello),
+    url(r'^$', index),
     url(r'^login/', hello),
     url(r'^signup/', hello),
     url(r'^ask/', hello),
