@@ -17,7 +17,17 @@ def question(request, num,):
         q = Question.objects.get(id=num)
     except Question.DoesNotExist:
         raise Http404
-    return render(request, 'question.html', {'question': q, })
+    if request.method == "POST":
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            _ = form.save()
+            url = q.get_url()
+            return HttpResponseRedirect(url)
+    else:
+        form = AnswerForm(initial={'question': q.id})
+
+    return render(request, 'question.html', {'question': q,
+                                             'form': form, })
 
 
 def index(request):
