@@ -53,3 +53,16 @@ def popular(request):
                    'paginator': paginator,
                    'questions': page.object_list,
                    'page': page, })
+
+
+def ask(request):
+    if request.method == "POST":
+        form = AskForm(request.POST)
+        if form.is_valid():
+            post = form.save()
+            url = post.get_url()
+            return HttpResponseRedirect(url)
+    else:
+        form = AskForm()
+    return render(request, 'ask.html', {'form': form, })
+
