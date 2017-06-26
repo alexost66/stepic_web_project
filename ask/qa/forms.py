@@ -12,6 +12,7 @@ class AskForm(forms.Form):
 
     def save(self):
         question = Question(**self.cleaned_data)
+        question.author_id = self._user.id
         question.save()
         return question
 
