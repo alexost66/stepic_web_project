@@ -29,11 +29,13 @@ class AnswerForm(forms.Form):
 
     def save(self):
         answer = Answer(**self.cleaned_data)
+        answer.author_id = self._user.id
         answer.save()
         return answer
 
 class SignupForm(forms.Form):
-    username = forms.CharField( max_length=100, required=False)
+    username = forms.CharField(max_length=100, required=False)
+    email = forms.EmailField(required=False)
     password = forms.CharField(widget=forms.PasswordInput, required=False)
 
     def clean_username(self):
